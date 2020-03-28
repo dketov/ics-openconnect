@@ -38,11 +38,13 @@ public class VpnProfile implements Comparable<VpnProfile> {
     public String mName;
 
     private UUID mUuid;
+    private String mUseragent;
 
     private void loadPrefs(SharedPreferences prefs) {
     	mPrefs = prefs;
 
     	String uuid = mPrefs.getString("profile_uuid", null);
+    	mUseragent = mPrefs.getString("useragent", null);
     	if (uuid != null) {
     		mUuid = UUID.fromString(uuid);
     	}
@@ -76,6 +78,10 @@ public class VpnProfile implements Comparable<VpnProfile> {
     public UUID getUUID() {
         return mUuid;
 
+    }
+
+    public String getUseragent() {
+        return mUseragent;
     }
 
     public String getName() {

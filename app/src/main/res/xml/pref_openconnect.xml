@@ -14,6 +14,18 @@
             android:dialogMessage="@string/add_profile_hostname_prompt"
             android:inputType="textUri"
             android:defaultValue="" />
+        <EditTextPreference
+            android:key="useragent"
+            android:title="@string/useragent"
+            android:dialogMessage="@string/useragent"
+            android:inputType="text"
+            android:defaultValue="Mozilla/5.0" />
+        <EditTextPreference
+            android:key="protocol"
+            android:title="@string/protocol"
+            android:dialogMessage="@string/protocol"
+            android:inputType="text"
+            android:defaultValue="" />
         <app.openconnect.ShowTextPreference
             android:key="ca_certificate"
             android:title="@string/ca_certificate"

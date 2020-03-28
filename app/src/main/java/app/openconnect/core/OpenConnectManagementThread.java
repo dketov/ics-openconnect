@@ -162,6 +162,10 @@ public class OpenConnectManagementThread implements Runnable, OpenVPNManagement 
     }
 
 	private class AndroidOC extends LibOpenConnect {
+		public AndroidOC(String useragent) {
+			super(useragent);
+		}
+
 		private String getPeerCertSHA1() {
 			MessageDigest md;
 			try {
@@ -694,7 +698,7 @@ public class OpenConnectManagementThread implements Runnable, OpenVPNManagement 
 
 		setState(STATE_CONNECTING);
 		synchronized (mMainloopLock) {
-			mOC = new AndroidOC();
+			mOC = new AndroidOC(getStringPref("useragent"));
 		}
 
 		if (setPreferences() == false) {
@@ -706,6 +710,7 @@ public class OpenConnectManagementThread implements Runnable, OpenVPNManagement 
 			errorAlert(mContext.getString(R.string.error_invalid_hostname, mServerAddr));
 			return false;
 		}
+		mOC.setProtocol(getStringPref("protocol"));
 		int ret = mOC.obtainCookie();
 		if (ret < 0) {
 			// don't pop up an alert if the user rejected the server cert
