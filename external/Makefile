@@ -1,4 +1,4 @@
-ANDROID_NDK ?= /opt/android-sdk-linux_x86/android-ndk-r16b
+ANDROID_NDK ?= ~/vpn/ndk-bundle
 
 JAR_DIR := ../app/libs
 JNI_DIR := ../app/src/main/jniLibs
